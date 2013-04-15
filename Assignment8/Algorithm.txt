@@ -1,0 +1,109 @@
+﻿Scientific programming
+Assignment8 - Algorithm
+Spring 2013
+Author: Julie Yu
+Modified date: 15 Apr 2013
+
+Problem #1
+
+Implement a class Address. An address has a house number, a street, an optional apartment number, a city, a state, and a postal code. Supply two constructors: one with an apartment number and one without. Supply a print method that prints the address with the street on one line and the city, state, and postal code on the next line. Supply a method public boolean comesBefore (Address other) that tests whether this address comes before another when the addresses are compared by postal code.
+Declare Class Address
+{
+	Declare Integer Private houseNum
+	Declare String Private street
+	Declare Integer Private aptNum
+	Declare String Private city
+	Declare String Private state
+	Declare Integer Private postalCode
+
+	//Constructor without apartment number
+	Declare Method Address(Integer houseNum, String street, Integer 						aptNum, String city, String state, Integer postalCode) 
+	{
+		this.houseNum = houseNum 
+		this.street = street 
+		this.city = city
+		this.state = state
+		this.postalCode = postalCode
+	}
+	//Constructor with an apartment number 
+	Declare Method Address(Integer houseNum, Integer aptNum, String street, 	Integer, aptNum, String city, String state, Integer postalCode) 
+	{
+		this.houseNum = houseNum 
+		this.aptNum = aptNum 
+		this.street = street 
+		this.city = city
+		this.state = state
+		this.postalCode = postalCode
+	}
+	Declare Method Public Void displayAddress()
+	{
+		Display (street)
+		Display in next line(city, state, postalCode)
+	}
+	Declare Method Public Boolean comesBefore(Integer comparePostalCode)
+	{
+		If (postalCode < comparePostalCode) Then
+			Return True
+		Else
+			Return False
+	}
+}
+
+
+Declare Class AddressDemo
+{
+	Call Address
+	Create a new object named addressEx of Class Address
+	Call addressDemo() 
+}
+
+
+
+Problem #2
+Implement a class sodaCan with methods getSurfaceArea() and getVolume(). In the constructor supply the height and radius of the can.
+
+Declare Class SodaCan
+{	
+	Declare Private Double height
+	Declare Private Double radius
+	Declare Private Double surfaceArea
+	Declare Private Double volume
+	Declare Private Final pi = 3.14	 
+	
+	//Constructor
+	Declare Method SodaCan(Integer height, Integer radius)	
+	{
+		this.height = height
+		this.radius = radius
+	}
+	Declare Method Void calSurfaceArea()
+	{
+		surfaceArea = (2 * pi * Pow(radius,2) ) + ((2 * pi * radius) * height)
+	}
+	Declare Method Void calVolume()
+	{
+		volume = pi * Pow(radius, 2) * height
+	}
+	Declare Method Double getSurfaceArea()
+	{
+		Return surfaceArea
+	}
+	Declare Method Double getVolume()
+	{
+		Return volume
+	}
+}
+Declare Class SodaCanDemo
+{
+	Call Class SodaCan
+	Create a new object named SodaCanEx 
+	SodaCan(5, 2)
+	SodaCan.getSurfaceArea()
+	SodaCan.getVolume()
+}
+ Problem # 3
+Implement a class Car with the following properties. A car has a certain fuel efficiency (measured in miles/gallon) and a certain amount of fuel in the gas tank. The efficiency is specified in the constructor, and the initial fuel level is 0. Supply a method drive that simulates driving the car for a cartain distance, reducing the fuel level in the gas tank, and methods getGasLevel, to return the current fuel level and addGas, to tank up. Sample usage:
+Car myHybrid = new Car(50); //50 miles per gallon
+myHybrid.addGas(20); // Tank 20 gallons
+myHybrid.drive(100); // Drive 100 miles
+System.out.println(myHybrid.getGasLevel()); // Print fuel remaining.
