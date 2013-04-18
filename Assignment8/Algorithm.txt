@@ -17,7 +17,7 @@ Declare Class Address
 	Declare Integer Private postalCode
 
 	//Constructor without apartment number
-	Declare Method Address(Integer houseNum, String street, Integer 						aptNum, String city, String state, Integer postalCode) 
+	Declare Method Address(Integer houseNum, String street,   						         String city, String state, Integer postalCode) 
 	{
 		this.houseNum = houseNum 
 		this.street = street 
@@ -71,7 +71,7 @@ Declare Class SodaCan
 	Declare Private Final pi = 3.14	 
 	
 	//Constructor
-	Declare Method SodaCan(Integer height, Integer radius)	
+	Declare Method SodaCan(double height, double radius)	
 	{
 		this.height = height
 		this.radius = radius
@@ -107,3 +107,44 @@ Car myHybrid = new Car(50); //50 miles per gallon
 myHybrid.addGas(20); // Tank 20 gallons
 myHybrid.drive(100); // Drive 100 miles
 System.out.println(myHybrid.getGasLevel()); // Print fuel remaining.
+
+Declare Class Car
+{
+	Declare Private Integer fuelEfficiency
+	Declare Private Integer amountOfFuel
+	
+	Declare Method public Car(Integer fuelEfficiency)
+	{
+		this.fuelEfficiency = fuelEfficiency
+		amountOfFuel = 0
+	}
+	Declare Method public void addGas(Integer addFuel)
+	{
+		amountOfFuel = amountOfFuel + addFuel
+		
+	}
+	Declare Method public void drive(Integer distance)
+	{
+		amountOfFuel = amountOfFuel – (distance / fuelEfficiency)
+	}
+	Declare Method public Integer getGasLevel()
+	{
+		Return amountOfFuel
+	}
+}
+Declare Method CarDemo
+{
+	Declare Integer userEfficiency
+	Declare Integer userDistance
+
+	Display “Enter the efficiency for your car”
+	Input userEfficiency
+	Call Class Car
+	Create a new object carEx(userEfficiency)
+	carEx.addGas(100)
+	
+	Display “Enter the distance for your simulation to drive”
+	Input userDistance
+	carEx.drive(userDistance)
+	Display (Call carEx.getGasLevel())
+}
