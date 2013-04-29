@@ -1,0 +1,248 @@
+﻿Csc130 Scientific Programming
+Spring 2013
+Assignment #9
+Algorithm
+
+
+Problem 1: Write a program that initializes an array with ten random integers and then prints out the following:
+Every element at an even index;
+Every even element
+All elements in reverse order;
+Only the first and last elements;
+The minimum and maximum element
+The sum of all elements
+The alternating sum of all elements, where the alternating sum contains all elements at even index added, and the elements at odd index subtracted.
+
+
+Declare Class RandomArray 
+{
+	Declare Array Integer randomArray[] = new Integer[10]
+	
+	Declare Integer ranNum
+		
+	//Generate random numbers and put them into the array 
+	For (Integer counter = 0 to counter = 9, counter ++)
+	{
+		Get random number
+		Input(ranNum)
+		randomArray[counter] = ranNum
+	}			
+	//Every elements at an even index
+	For (Integer counter = 0 to counter = 9, counter++)
+	{
+		if (counter%2 == 0)
+		{
+			Display (randomArray[counter])
+		}
+	}	
+	//Every even elements
+	For (Integer counter = 0 to counter = 9, counter ++)
+	{
+		if (randomArray[counter] % 2 == 0)
+		{
+			Display (randomArray[counter])
+		}
+	}
+	//All elements in reversed order
+	For (Integer counter = 9 to counter = , counter++)
+	{	
+		Display (randomArray[counter])
+	}
+	//Only first and last elements
+	Display randomArray[0] // → first element
+	Display randomArray[9] // → last element
+
+	//Minimum and maximum elements
+	Declare min = randomArray[0]
+	Declare max = randomArray[0]
+	For (Integer counter = 0 to counter = 9, counter++)
+	{
+		If (randomArray[counter] < min)
+		{
+			min = randomArray[counter]
+		}
+		
+	}
+	For (Integer counter = 0 to counter = 9, counter++)
+	{
+		If (max < randomArray[counter])
+		{
+			max = randomArray[counter]
+		}
+	}
+
+	// Sum of all elements
+	Declare sumOfElements = 0
+	For (counter = 0 to counter = 9, counter++)
+	{
+		sumOfElements =sumOfElements + randomArray[counter] 
+	}
+
+	//Alternating sum (sum of even index element – sum of odd index 	      	element)
+	evenSum = 0 
+	oddSum = 0
+	For (counter = 0 to counter = 9, counter++)
+	{
+		If (counter%2 == 0)
+		{
+			evenSum = evenSum + randomArray[counter]
+		}
+		else if (counter%2 != 0)
+		{
+			oddSum = oddSum + randomArray[counter]
+		}
+	}
+	Display (evenSum - oddSum)
+
+}
+
+Problem 2: Write a program that reads a sequence of input values and displays a bar chart of the values in data, using asterisks, like this:
+********************* 
+************************* 
+********* 
+**************************
+
+You may assume that all values are positive. First figure out the maximum value in data. That value's bar should be drawn with 40 asterisks. Shorter bars should use proportionally fewer asterisks. Improve your program by adding caption to your bar. Prompt the user for the captions and data values. The output should look like this:
+
+Egypt
+*********************
+France
+*************************
+Norway
+*********
+Germany
+**************************
+
+
+
+ANS) 
+
+Declare Class StarStat
+{
+	Integer numOfValues
+	Declare Array String[] valueName 
+	Declare Array Integer[] value
+	Declare Integer currentMax
+
+	Declare Public Void setValues()
+	{
+		Display (“Type how many values to input: “)
+		Input numOfValues
+		new valueName[numOfValues]
+		new value[numOfValues]
+		
+		For (Integer counter=0 to counter<valueName.length, counter++)
+		{
+			Display (“Please enter the title for the value # “, counter+1)
+			Input valueName[counter]
+			Display (“Please enter the value for the # “, counter+1)
+			Input value[counter] 
+		}
+	}
+	Declare Public Void findMax()
+	{
+		currentMax = value[0]
+		For (Integer counter=0 to counter < value.length(), counter++)
+		{		
+			If( currentMax < value[counter])
+			{
+				currentMax = value[counter]
+			}
+		}
+	}
+	Declare public Void displayStarStat()
+	{
+		Integer valueStars
+	
+		For (Integer counter=0 to counter < value.length(), counter++)
+		{
+			valueStars = double(value[counter]/currentMax)
+			For (Integer count=0 to count < valueStars, count++)
+			{
+				Display (“*”)
+			} 	
+		}
+	}
+	
+}
+Declare Class StarStatDemo
+{
+}
+
+Problem 3: A theater seating chart is implemented as a two-dimensional array of ticket prices like presented below. Write a program that prompts the users to pick either a seat or a price. Mark sold seats by changing the price to zero. When a user specifies a seat, make sure it is available. When a user specifies a price, find any seat with that price. Verify that the price is among those offered by the theater.
+10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 20 20 20 20 20 20 10 10 10 10 20 20 20 20 20 20 10 10 10 10 20 20 20 20 20 20 10 10 20 20 30 30 40 40 30 30 20 20 20 30 30 40 50 50 40 30 30 20 30 40 50 50 50 50 50 50 40 30
+
+
+Declare Class theaterChartDemo
+{
+	Declare Integer[][] table = new Integer[9][10]
+	
+	Declare Constructor theaterCharDemo()
+	{
+		Create theater seat chart
+	}
+	Declare Public Void displayChart()
+	{
+		Display theater seat chart
+	}
+	Declare Public Integer userChoice()
+	{
+		Declare Integer userInput
+
+		Display (“Do you want to purchase your ticket by a seat or price?”)
+		Display (“Please select 1 for seat or 2 for price”)
+		Input userInput
+	}
+	Declare Private Boolean isTaken(Integer row, Integer colum)
+	{
+		If (table[row][colum] == 0) Then
+		{
+			Return False
+		}
+		Else Then
+		{
+			Return True
+		}
+	}
+	Declare Public Void PickBySeat()
+	{
+		Declare Integer rowNum
+		Declare Integer colNum
+		
+		displayChart()
+		Display (“Please select a row number”)
+		Input rowNum
+		Display (“Please select a colum number”)
+		Input colNum
+
+		If (0 < rowNum < 9) and (0 < colNum < 10) Then
+		{
+			
+			if (isTaken(rowNum, colNum) Then
+			{
+				Display (“Your seat is selected”)
+				Display (“Your seat is at “, rowNum, “ row “, colNum)
+			}
+		
+			Else Then
+			{
+				Display (“Sorry the seat is taken. Please choose other 					seat”)
+			}
+		}
+		Else Then
+		{
+			Display (“Invalid input. Row number is in 0 – 8, Colum number is 
+			in 0 - 9”)
+		}
+	
+	}
+	Declare Public Void pickByPrice()
+	{
+		Decla
+		
+	}
+
+}
+Declare Class theaterChart 
+{
+}
