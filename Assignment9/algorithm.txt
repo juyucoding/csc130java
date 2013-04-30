@@ -2,6 +2,8 @@
 Spring 2013
 Assignment #9
 Algorithm
+Author : Julie Yu
+Modified date: April 30 2013
 
 
 Problem 1: Write a program that initializes an array with ten random integers and then prints out the following:
@@ -156,7 +158,7 @@ Declare Class StarStat
 	
 		For (Integer counter=0 to counter < value.length(), counter++)
 		{
-			valueStars = double(value[counter]/currentMax)
+			valueStars = double(value[counter]/currentMax) * 40
 			For (Integer count=0 to count < valueStars, count++)
 			{
 				Display (“*”)
@@ -167,13 +169,18 @@ Declare Class StarStat
 }
 Declare Class StarStatDemo
 {
+	Create a new object named demoVer1 of StarStatDemo
+	Call demoVer1.setValues()
+	Call demoVer1.findMax()
+	Call demoVer1.displayStarStat()
 }
+
 
 Problem 3: A theater seating chart is implemented as a two-dimensional array of ticket prices like presented below. Write a program that prompts the users to pick either a seat or a price. Mark sold seats by changing the price to zero. When a user specifies a seat, make sure it is available. When a user specifies a price, find any seat with that price. Verify that the price is among those offered by the theater.
 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 20 20 20 20 20 20 10 10 10 10 20 20 20 20 20 20 10 10 10 10 20 20 20 20 20 20 10 10 20 20 30 30 40 40 30 30 20 20 20 30 30 40 50 50 40 30 30 20 30 40 50 50 50 50 50 50 40 30
 
 
-Declare Class theaterChartDemo
+Declare Class theaterChart
 {
 	Declare Integer[][] table = new Integer[9][10]
 	
@@ -238,11 +245,80 @@ Declare Class theaterChartDemo
 	}
 	Declare Public Void pickByPrice()
 	{
-		Decla
+		Declare Integer userPickRow
+		Declare Integer userPickColumn
+		Declare Integer userPrice
+		
+		Display (“Choose your price”)
+		Input userPrice
+		
+		If (userPrice == 10)
+		{
+			Display available seats
+			Display (“Enter a row number “)
+			Input userPickRow
+			Display (“Enter a column number “)
+			Input userPickColumn
+			Check if the userPickRow & userPickColumn are available
+			table[userPickRow][userPickColumn] = 0
+		}
+		Else If (userPrice == 20)
+		{
+			Same above
+		}
+		Else If (userPrice == 30)
+		{
+			Same above
+		}
+		Else If (userPrice == 40)
+		{
+			Same above
+		}
+		Else If (userPrice == 50)
+		{
+			Same above
+		}
+		Else
+		{
+			Display (“Error. The price is out of range.”)
+		}
+
 		
 	}
 
 }
-Declare Class theaterChart 
+Declare Class theaterChartDemo
 {
+	Declare Integer userInput
+	Declare Boolean userFlag = True
+	Declare Integer userSeatMethod
+
+	Create an object named demo of theaterChart class
+	Call demo.displayChart()
+	Display (“Press 0 to exit”)
+	Input userInput
+	While (userFlag)
+	{
+		Call demo.userChoice()
+		Input userSeatMethod
+		If (userSeatMethod == 1)
+		{
+			Call demo.pickBySeat()
+		}
+		Else If (userSeatMethod == 2)
+		{
+			Call demo.pickByPrice()
+		}
+		Else
+		{
+			Display (“Error. You must choose either 1 or 2”)
+		}
+		Display (“Press 0 to exit”)
+		Input userInput
+		If (userInput == 0)
+		{
+			userFlag = False		
+		}
+	}
+
 }

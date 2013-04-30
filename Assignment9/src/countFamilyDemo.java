@@ -1,12 +1,21 @@
+/*
+ * CSC130 Scientific Programming
+ * Spring 2013
+ * Assignment#9 Problem#2
+ * Author: Julie Yu
+ * Modified date: Apr 30 2013
+ */
+
 import java.util.Scanner;
 
 class CountFamily
 {
-   double private userInput;
-   double private  maxIncome;
+   
+   double userInput;
+   double maxIncome;
    double[] income;
 
-   Scanner keybaord = new Scanner(System.in);
+   Scanner keyboard = new Scanner(System.in);
 
    public void getFamilyNum(int k)
    {
@@ -30,7 +39,7 @@ class CountFamily
 
    	for (int counter=0; counter < income.length; counter++)
 	{	
-		if maxIncome < income[counter]
+		if (maxIncome < income[counter])
 		{
 		   maxIncome = income[counter];
 		}
@@ -55,12 +64,21 @@ class CountFamily
    }
 
 }
-public class CountFamilyDemo
+public class countFamilyDemo
 {
-	int familyNum;
-	System.out.println("Enter how many family: ");
-	familyNum = keyboard.nextInt();
-	CountFamily demoVer1 = new CountFamily;
-	demoVer1.getFamilyNum(familyNum);
-	demoVer1.setIncome
+        
+	
+        public static void main(String[] args)
+	{
+                  
+         Scanner keyboard = new Scanner(System.in);         
+	 int familyNum;
+	 
+         System.out.println("Enter how many family: ");
+	 familyNum = keyboard.nextInt();
+	 
+         CountFamily demoVer1 = new CountFamily();
+	 demoVer1.getFamilyNum(familyNum);
+	 demoVer1.setIncome();
+	}
 }

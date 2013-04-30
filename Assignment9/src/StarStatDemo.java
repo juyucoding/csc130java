@@ -17,6 +17,7 @@ class StarStat
 	
 	int numOfValues;
 	String[] valueName;
+	int userValueInput;
 	int[] value;
 	double currentMax;
 
@@ -36,7 +37,10 @@ class StarStat
 		{
 			System.out.println("Please type a caption for the value # " + (counter+1));
 			valueName[counter] = keyboard.next();
+			
 			System.out.println("Please type a value for the value # " + (counter+1));
+			//userValueInput = keyboard.nextInt();
+			
 			value[counter] = keyboard.nextInt();
 		}
 	}
@@ -58,13 +62,14 @@ class StarStat
 	public void displayStarStat()
 	{
 		double valueStars;
+		System.out.println("Your maximum value is " + currentMax);
 		for (int counter=0; counter < numOfValues; counter++)
 		{
 			double newValue = value[counter];
 			
-			valueStars = newValue/currentMax;
+			valueStars = (newValue/currentMax) * 40;
 			
-			System.out.print(valueName[counter]);
+			System.out.print(valueName[counter] + " ");
 
 			for (int count=0; count<valueStars; count++)
 			{	
