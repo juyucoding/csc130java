@@ -1,0 +1,120 @@
+﻿CSC130 Scientific Programming
+Final Project Outline
+→ Assignment Checker
+
+1) This program gets the information about courses that user is taking
+2) Store the course information as an array
+3) User can check for the submission
+4) User can print out what courses she/he is taking
+5) User can check out what tasks need to be done
+
+Input: Course title, number of tasks, task name, due dates and checking
+Output: A table of the information
+
+// A common task for the each course 
+   It will be used in Assignment Checker java program as an each element.
+CourseWork.java
+
+Declare Public Class CourseWork
+{
+	Declare Private String courseName
+	Declare String[] taskName 
+	Declare Integer numOfTask
+	Declare String[] dueDate
+
+	// Contructor: It sets course name, a size of taskName and duedate array
+	Declare Public CourseWork(String courseName, Integer numOfTask)
+	{
+		this.courseName = courseName
+		this.numOfTask = numOfTask
+		taskName = new String[numOfTask]
+		dueDate = new String[numOfTask]
+	}
+	// It assigns each task and duedate into the array
+	Declare Public Void setTaskAndDue(String task, String due, Integer taskNum)
+	{
+		taskName[taskNum] = task 		
+		dueDate[taskNum] = due
+	}
+	//It displays a collection of all information corresponding to a course 
+	Declare Public Void displayCourseInfo()
+	{
+		Display (“The course name: “, courseName)
+		Display (“The task for the course: “)
+		For (counter = 0 to counter < numOfTask, counter++)
+		{
+			Display taskName[counter]
+			Display (“The due date is: “ , dueDate[counter])
+		}
+		
+	}	
+
+}
+
+//This actually uses courseWork program as a data type for an array that is a data storage for course information
+
+AssignmentChecker.java
+
+Declare Public Class AssignmentChecker
+{
+	
+	Declare Private Integer numberOfCourse
+	Declare CourseWork[] Checker 
+	Declare Private String coursename
+	Declare Private Integer numForTask
+	Declare Private String taskname
+	Declare Private String duedate
+
+	//Constructor: It will get a size of the array for CourseWork array.
+	Public AssignmentChecker(Integer numberOfCourse)
+	{
+		this.numberOfCourse = numberOfCourse
+		//Checker is an object to access/modify the array of data type CourseWork 
+		Checker = new CourseWork[numberOfCourse] 
+	}
+	
+ 	// Based on a size of the array, it will assigns course name for each index. It also gets a size of
+	tasks for the course 
+	Public Void setCourseName(String course)
+	{
+		For (counter = 0 to counter < numberOfCourse, counter++)
+		{
+			Display (“Enter the course title: “)
+			Input coursename
+			Display (“How many tasks do you have for the course? “)
+			Input numForTask
+			// Each element of the array, it has a number of size for task and due date
+			Checker[counter] = new CourseWork(coursename, numForTask)
+		}
+	
+	}
+	//Once the size of task and duedate array are known, it will go through the loop first course title
+	and for each course it will go through for a number of task to assign the task and due date at 
+	at the same time.
+	Public Void setTaskandDue()
+	{
+		For (course=0 to course  < numberOfCourse, course++)
+		{
+			For ( task=0 to task < numForTask, task++)
+			{
+				Display (“What is your task? “)
+				Input taskname
+				Display (“When is the task due? “)
+				Input duedate
+				Checker[counter].setTaskAndDue(taskname, duedate, task)
+			}
+		}
+	}
+	Public Void displayInfo()
+	{
+		For (counter=0 to counter < numOfCourse, counter++)
+		{
+			Checker[counter].displayCourseInfo()
+		}
+	}
+	
+}
+
+Declare Class AssignmentCheckerDemo
+{
+}
